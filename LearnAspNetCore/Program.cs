@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
 
 namespace LearnAspNetCore
 {
@@ -14,7 +10,13 @@ namespace LearnAspNetCore
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            using (var host = WebHost.Start("http://localhost:8080", context => context.Response.WriteAsync("Hello WebHost!")))
+            {
+                Console.WriteLine("Application has been started");
+                host.WaitForShutdown();
+            }
+
+            //CreateWebHostBuilder(args).Build().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
