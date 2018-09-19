@@ -10,13 +10,7 @@ namespace LearnAspNetCore
     {
         public static void Main(string[] args)
         {
-            using (var host = WebHost.Start("http://localhost:8080", context => context.Response.WriteAsync("Hello WebHost!")))
-            {
-                Console.WriteLine("Application has been started");
-                host.WaitForShutdown();
-            }
-
-            //CreateWebHostBuilder(args).Build().Run();
+            CreateWebHostBuilder(args).Build().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
