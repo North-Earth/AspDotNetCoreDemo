@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -11,6 +8,10 @@ namespace LearnAspNetCore
 {
     public class Startup
     {
+        private int x = 5;
+        private int y = 2;
+        private int z = 0;
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
@@ -25,7 +26,19 @@ namespace LearnAspNetCore
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(Handle);
+            app.Use(async (context, next) =>
+            {
+                z = x * y;
+                await next();
+                z = z * 5;
+                await Handle(context);
+            });
+
+            app.Run(async (context) =>
+            {
+                z = z * 2;
+                await Task.FromResult(0);
+            });
         }
 
         private async Task Handle(HttpContext context)
@@ -38,7 +51,8 @@ namespace LearnAspNetCore
 
             await context.Response.WriteAsync($"<h3>Хост: {host}</h3>" +
                 $"<h3>Пусть запроса: {path}</h3>" +
-                $"<h3>Параметры строки запроса: {query}</h3>");
+                $"<h3>Параметры строки запроса: {query}</h3>" +
+                $"z = {z}");
         }
     }
 }
