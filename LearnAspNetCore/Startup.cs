@@ -26,6 +26,16 @@ namespace LearnAspNetCore
                 app.UseDeveloperExceptionPage();
             }
 
+            app.Map("/home", (home) =>
+            {
+                home.Map("/index", (appBuilder) =>
+                {
+                    appBuilder.Run(async (contex)
+                        => await contex.Response.WriteAsync("<h2>Home Page</h2>"));
+                });
+                home.Map("/about", About);
+            });
+
             app.Use(async (context, next) =>
             {
                 z = x * y;
@@ -39,6 +49,12 @@ namespace LearnAspNetCore
                 z = z * 2;
                 await Task.FromResult(0);
             });
+        }
+
+        private void About(IApplicationBuilder appBuilder)
+        {
+            appBuilder.Run(async (contex)
+                => await contex.Response.WriteAsync("<h2>About</h2>"));
         }
 
         private async Task Handle(HttpContext context)
