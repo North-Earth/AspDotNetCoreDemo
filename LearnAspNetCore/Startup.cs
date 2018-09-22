@@ -26,6 +26,8 @@ namespace LearnAspNetCore
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseToken("5555");
+
             app.Map("/home", (home) =>
             {
                 home.Map("/index", (appBuilder) =>
