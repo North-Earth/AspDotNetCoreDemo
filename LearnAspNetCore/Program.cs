@@ -1,8 +1,5 @@
-﻿using System;
-using System.IO;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 
 namespace LearnAspNetCore
 {
@@ -15,6 +12,7 @@ namespace LearnAspNetCore
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                //.UseWebRoot("static")
                 .UseStartup<Startup>();
     }
 }

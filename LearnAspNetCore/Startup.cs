@@ -26,6 +26,13 @@ namespace LearnAspNetCore
                 app.UseDeveloperExceptionPage();
             }
 
+            DefaultFilesOptions options = new DefaultFilesOptions();
+            options.DefaultFileNames.Clear();
+            options.DefaultFileNames.Add("HelloPage.html");
+
+            app.UseDefaultFiles(options); //default.html index.html
+            app.UseStaticFiles();
+
             app.UseMiddleware<ErrorHanlingMiddleware>();
             app.UseMiddleware<AuthenticationMiddleware>();
             app.UseMiddleware<RoutingMiddleware>();
