@@ -30,9 +30,7 @@ namespace LearnAspNetCore
 
     public static class TokenExtensions
     {
-        public static IApplicationBuilder UseToken(this IApplicationBuilder builder, string pattern)
-        {
-            return builder.UseMiddleware<TokenMiddleware>(pattern);
-        }
+        public static IApplicationBuilder UseToken(this IApplicationBuilder builder, string pattern) 
+            => builder.UseMiddleware<TokenMiddleware>(pattern);
     }
 }
