@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using LearnAspNetCore.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -16,26 +17,33 @@ namespace LearnAspNetCore
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IMessageSender, SmsMessageSender>();
+            services.AddTransient<TimeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline. 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMessageSender sender, TimeService timeService)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            DefaultFilesOptions options = new DefaultFilesOptions();
-            options.DefaultFileNames.Clear();
-            options.DefaultFileNames.Add("HelloPage.html");
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync(timeService.GetTime());
+            });
 
-            app.UseDefaultFiles(options); //default.html index.html
-            app.UseStaticFiles();
+            //DefaultFilesOptions options = new DefaultFilesOptions();
+            //options.DefaultFileNames.Clear();
+            //options.DefaultFileNames.Add("HelloPage.html");
 
-            app.UseMiddleware<ErrorHanlingMiddleware>();
-            app.UseMiddleware<AuthenticationMiddleware>();
-            app.UseMiddleware<RoutingMiddleware>();
+            //app.UseDefaultFiles(options); //default.html index.html
+            //app.UseStaticFiles();
+
+            //app.UseMiddleware<ErrorHanlingMiddleware>();
+            //app.UseMiddleware<AuthenticationMiddleware>();
+            //app.UseMiddleware<RoutingMiddleware>();
 
             //app.UseToken("5555");
 
