@@ -17,22 +17,29 @@ namespace LearnAspNetCore
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IMessageSender, SmsMessageSender>();
+            services.AddTransient<IMessageSender, EmailMessageSender>();
             services.AddTransient<TimeService>();
+            services.AddTransient<MessageService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline. 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMessageSender sender, TimeService timeService)
+        public void Configure(IApplicationBuilder app,
+            IHostingEnvironment env, TimeService timeService)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync(timeService.GetTime());
-            });
+            app.UseMiddleware<MessageMiddleware>();
+
+            //app.Run(async (context) =>
+            //{
+            //    var sender = context.RequestServices.GetService<MessageService>(); //Вернёт null
+            //    //var sender = context.RequestServices.GetRequiredService<MessageService>(); //Вернёт Exeption
+            //    await context.Response.WriteAsync($"{sender?.SendMessage()} " +
+            //        $"Time: {timeService.GetTime()}");
+            //});
 
             //DefaultFilesOptions options = new DefaultFilesOptions();
             //options.DefaultFileNames.Clear();
