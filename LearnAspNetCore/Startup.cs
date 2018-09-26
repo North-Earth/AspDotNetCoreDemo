@@ -17,21 +17,33 @@ namespace LearnAspNetCore
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IMessageSender, EmailMessageSender>();
-            services.AddTransient<TimeService>();
-            services.AddTransient<MessageService>();
+            //services.AddTransient<IMessageSender, EmailMessageSender>();
+            //services.AddTransient<TimeService>();
+            //services.AddTransient<MessageService>();
+
+            /*Transient - Отдельный экземпляр для каждого получения объекта сервиса*/
+            services.AddTransient<ICounter, RandomCounter>();
+            services.AddTransient<CounterService>();
+
+            /*Scorped - Один экземпляр для каждого запроса*/
+            //services.AddScoped<ICounter, RandomCounter>();
+            //services.AddScoped<CounterService>();
+
+
+            /*Singleton - Один экземпляр сервиса на весь период жизни приложения*/
+            //services.AddSingleton<ICounter, RandomCounter>();
+            //services.AddSingleton<CounterService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline. 
-        public void Configure(IApplicationBuilder app,
-            IHostingEnvironment env, TimeService timeService)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMiddleware<MessageMiddleware>();
+            app.UseMiddleware<CounterMeddleware>();
 
             //app.Run(async (context) =>
             //{
