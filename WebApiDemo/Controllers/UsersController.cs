@@ -36,8 +36,23 @@ namespace WebApiDemo.Controllers
         public IActionResult Post([FromBody]User user)
         {
             if (user == null)
-                return BadRequest();
+            {
+                ModelState.AddModelError("", "Не указаны данные для пользователя");
+                return BadRequest(ModelState);
+            }
 
+            // Обработка частных случаев валидации.
+            if (user.Age == 111)
+                ModelState.AddModelError("Age", $"Возраст не должен быть равен {user.Age}");
+
+            if (user.Name == "admin")
+                ModelState.AddModelError("Name", $"Недопустимое имя пользователя - {user.Name}");
+
+            // Eсли валидация не пройдена - возвращаем ошибку 400.
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            // Иначе, сохраняем в базу данных.
             db.Users.Add(user);
             db.SaveChanges();
             return Ok(user);

@@ -21,7 +21,7 @@ namespace WebApiDemo
         public void ConfigureServices(IServiceCollection services)
         {
             //Подключение к серверу.
-            string connectionString = @""; //<----- Connection String
+            string connectionString = @"Server=EARTH\EARTH;Database=DevelopBase;Trusted_Connection=True;"; //<----- Connection String
             services.AddDbContext<UsersContext>(options => options.UseSqlServer(connectionString));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
