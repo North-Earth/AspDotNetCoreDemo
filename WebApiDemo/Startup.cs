@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Net.Http.Headers;
 using WebApiDemo.Models;
 
 namespace WebApiDemo
@@ -20,8 +22,16 @@ namespace WebApiDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //Подключение к серверу.
-            string connectionString = @"Server=EARTH\EARTH;Database=DevelopBase;Trusted_Connection=True;"; //<----- Connection String
+            // XML форматтер.
+            services.AddMvc()
+                .AddXmlDataContractSerializerFormatters()
+                .AddMvcOptions(opts =>
+                {   // Сопостовление формата с запросом.
+                    opts.FormatterMappings.SetMediaTypeMappingForFormat("xml", new MediaTypeHeaderValue("application/xml"));
+                });
+
+            // Подключение к серверу.
+            string connectionString = @""; //<----- Connection String
             services.AddDbContext<UsersContext>(options => options.UseSqlServer(connectionString));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

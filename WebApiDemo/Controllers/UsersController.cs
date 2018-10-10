@@ -16,6 +16,7 @@ namespace WebApiDemo.Controllers
 
         // GET api/users
         [HttpGet]
+        [FormatFilter] //Атрибут форматирования.
         public IEnumerable<User> Get()
             => db.Users.ToList();
 
