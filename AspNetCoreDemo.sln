@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.28010.2019
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearnAspNetCore", "LearnAspNetCore\LearnAspNetCore.csproj", "{5A37C8E1-8FB8-4BE1-B455-B48FFACD87DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiDemo", "WebApiDemo\WebApiDemo.csproj", "{35C3940F-5931-4D79-B338-FC8662B67255}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiDemo", "WebApiDemo\WebApiDemo.csproj", "{35C3940F-5931-4D79-B338-FC8662B67255}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcAspDotNetCoreDemo", "MvcAspDotNetCoreDemo\MvcAspDotNetCoreDemo.csproj", "{BFF5A777-1019-4D7D-8721-6006545135D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{35C3940F-5931-4D79-B338-FC8662B67255}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35C3940F-5931-4D79-B338-FC8662B67255}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35C3940F-5931-4D79-B338-FC8662B67255}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFF5A777-1019-4D7D-8721-6006545135D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFF5A777-1019-4D7D-8721-6006545135D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFF5A777-1019-4D7D-8721-6006545135D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFF5A777-1019-4D7D-8721-6006545135D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
