@@ -31,8 +31,9 @@ namespace WebApiDemo
                 });
 
             // Подключение к серверу.
-            string connectionString = @"";
-            services.AddDbContext<UsersContext>(options => options.UseSqlServer(connectionString));
+            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<UsersContext>(options 
+                => options.UseSqlServer(connectionString));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
