@@ -16,8 +16,8 @@ namespace MvcAspDotNetCoreDemo
 
         public void ConfigureServices(IServiceCollection services)
         {
-            string connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<CarContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<CarContext>(options
+                => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc();
         }
 

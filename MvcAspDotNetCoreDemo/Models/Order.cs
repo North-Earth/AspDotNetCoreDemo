@@ -12,6 +12,6 @@
 
         public int CarId { get; set; }
 
-        public Car Phone { get; set; }
+        public Car Car { get; set; }
     }
 }
