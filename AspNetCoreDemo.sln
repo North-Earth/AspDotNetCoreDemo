@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearnAspNetCore", "LearnAsp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiDemo", "WebApiDemo\WebApiDemo.csproj", "{35C3940F-5931-4D79-B338-FC8662B67255}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcAspDotNetCoreDemo", "MvcAspDotNetCoreDemo\MvcAspDotNetCoreDemo.csproj", "{BFF5A777-1019-4D7D-8721-6006545135D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcAspDotNetCoreDemo", "MvcAspDotNetCoreDemo\MvcAspDotNetCoreDemo.csproj", "{BFF5A777-1019-4D7D-8721-6006545135D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

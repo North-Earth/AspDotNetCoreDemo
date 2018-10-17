@@ -1,34 +1,24 @@
 ﻿@model IEnumerable<MvcAspDotNetCoreDemo.Models.Car>
 @{
-    Layout = null;
+    ViewData["Title"] = "Каталог товаров";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>Автосалон</title>
-</head>
-<body>
-    <h3>Автомобили</h3>
-    <table>
+<h3>Автомобили</h3>
+<table class="table-condensed">
+    <tr>
+        <td>Марка</td>
+        <td>Модель</td>
+        <td>Год выпуска</td>
+        <td>Цена</td>
+        <td></td>
+    </tr>
+    @foreach (var car in Model)
+    {
         <tr>
-            <td>Марка</td>
-            <td>Модель</td>
-            <td>Год выпуска</td>
-            <td>Цена</td>
-            <td></td>
+            <td>@car.Make</td>
+            <td>@car.Model</td>
+            <td>@car.Year</td>
+            <td>@car.Price</td>
+            <td><a href="~/Home/Buy/@car.Id">Купить</a></td>
         </tr>
-        @foreach (var car in Model)
-        {
-            <tr>
-                <td>@car.Make</td>
-                <td>@car.Model</td>
-                <td>@car.Year</td>
-                <td>@car.Price</td>
-                <td><a href="~/Home/Buy/@car.Id">Купить</a></td>
-            </tr>
-        }
-    </table>
-</body>
-</html>
+    }
+</table>
