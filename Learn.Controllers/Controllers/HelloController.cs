@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -26,6 +27,31 @@ namespace Learn.Controllers.Controllers
         {
             return $"Площадь треугольника с основанием {geometry.Altitude} " +
                 $"и высотой {geometry.Height} равна {geometry.GetSquare()}";
+        }
+
+        public string SquareQuery() // Получение данных из строки запроса внутри метода.
+        {
+            string altitudeString = Request.Query.FirstOrDefault(p => p.Key == "altitude").Value;
+            int altitude = Int32.Parse(altitudeString);
+
+            string heightString = Request.Query.FirstOrDefault(p => p.Key == "height").Value;
+            int height = Int32.Parse(heightString);
+
+            double square = altitude * height / 2;
+            return $"Площадь треугольника с основанием {altitude} и высотой {height} равна {square}";
+        }
+
+        [HttpPost]
+        public string SquareQueryForm() // Получение данных из  отправленной формы запроса внутри метода.
+        {
+            string altitudeString = Request.Form.FirstOrDefault(p => p.Key == "altitude").Value;
+            int altitude = Int32.Parse(altitudeString);
+
+            string heightString = Request.Form.FirstOrDefault(p => p.Key == "height").Value;
+            int height = Int32.Parse(heightString);
+
+            double square = altitude * height / 2;
+            return $"Площадь треугольника с основанием {altitude} и высотой {height} равна {square}";
         }
 
         // [Controller]/Sum?nums=1&nums=2&nums=3
