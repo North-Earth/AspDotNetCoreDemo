@@ -15,10 +15,11 @@ namespace Learn.Controllers.Controllers
             return name != null ? $"Hello, {name}!" : "Hello!";
         }
 
-        public string Square(int a = 3, int h = 10) //Разрешено использование параметров по умолчанию.
+        [HttpPost]
+        public string Square(int altitude, int height) // Разрешено использование параметров по умолчанию.
         {
-            double s = a * h / 2;
-            return $"Площадь треугольника с основанием {a} и высотой {h} равна {s}";
+            double square = altitude * height / 2;
+            return $"Площадь треугольника с основанием {altitude} и высотой {height} равна {square}";
         }
 
         public string Square(Geometry geometry)
