@@ -18,10 +18,10 @@ namespace Learn.Controllers.Controllers
         }
 
         [HttpPost]
-        public string Square(int altitude, int height) // Разрешено использование параметров по умолчанию.
+        public IActionResult Square(int altitude, int height) // Разрешено использование параметров по умолчанию.
         {
             double square = altitude * height / 2;
-            return $"Площадь треугольника с основанием {altitude} и высотой {height} равна {square}";
+            return Content($"Площадь треугольника с основанием {altitude} и высотой {height} равна {square}");
         }
 
         public string Square(Geometry geometry)
