@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Learn.Controllers.Models;
 using Learn.Controllers.Util;
 using Microsoft.AspNetCore.Mvc;
 
@@ -67,9 +68,17 @@ namespace Learn.Controllers.Controllers
             return $"Сумма площадей равна {geoms.Sum(g => g.GetSquare())}";
         }
 
+        // Возвращает HTML ответ.
         public HtmlResult GetHtml()
         {
             return new HtmlResult("<h2>Привет ASP.NET Core</h2>");
+        }
+
+        // Возвращает ответ в формате JSON.
+        public JsonResult GetUserJson()
+        {
+            User user = new User { Name = "Alex", Age = 20 };
+            return Json(user);
         }
     }
 
