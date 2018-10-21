@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Learn.Controllers.Util;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -64,6 +65,11 @@ namespace Learn.Controllers.Controllers
         public string Sum(Geometry[] geoms)
         {
             return $"Сумма площадей равна {geoms.Sum(g => g.GetSquare())}";
+        }
+
+        public HtmlResult GetHtml()
+        {
+            return new HtmlResult("<h2>Привет ASP.NET Core</h2>");
         }
     }
 
