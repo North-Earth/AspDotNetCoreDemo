@@ -11,6 +11,26 @@ namespace Learn.Controllers.Controllers
     // [NonController] - Атрибут позволяет не рассматривать класс, как контроллер.
     public class HelloController : Controller
     {
+        public IActionResult Index()
+        {
+            // Временная переадресация, знак "~" означает текущий каталог приложения.
+            // При временной переадресации будет возвращаться статусный код 302.
+            // return Redirect("~/Home/About");
+
+            // Также можно использовать адрес внешних источников.
+            //return Redirect("http://microsoft.com");
+
+            // При постоянной переадресации будет возвращаться статусный код 301.
+            //return RedirectPermanent("~/Home/About");
+
+            // Переадресация на определенный метод контроллера.
+            // return RedirectToAction("Square", "Hello", new { altitude = 10, height = 3 });
+
+            // Переадресация по заданному маршруту из Startup
+            return RedirectToRoute("default", new { controller = "Home", action = "About" 
+                /*Передача входных параметров, например height = 2, altitude = 20*/ });
+        }
+
         // [NonAction] - Не рассматривает метод, как действие контроллера.
         [ActionName("Welcome")] // Атрибут позволяет для метода задать другое имя действия.
         public string Hello(string name)
