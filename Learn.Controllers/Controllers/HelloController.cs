@@ -31,6 +31,46 @@ namespace Learn.Controllers.Controllers
                 /*Передача входных параметров, например height = 2, altitude = 20*/ });
         }
 
+        public IActionResult GetStatusCode()
+        {
+            //Ответ статус кодом.
+            return StatusCode(401);
+        }
+
+        public IActionResult GetNotFoundResource()
+        {
+            //Отправляет статус 404.
+
+            //return NotFound(); //Отображение статуса 404.
+            return NotFound("Ресурс не найден :("); //Отображение возвращаемого объекта.
+        }
+
+        // [Controller]/UnauthorizedResult?age=18
+        public IActionResult GetUnauthorizedResult(int age)
+        {
+            //Проверка авторизации и отправка кода 401(ограничение доступа).
+            if (age < 18)
+                return Unauthorized();
+            return Content("Проверка пройдена");
+        }
+
+        // [Controller]/GetBadRequest?s=abc
+        public ActionResult<string> GetBadRequest(string s)
+        {
+            // Возвращает статус 400 - нельзя обработать запрос, если не передаём значений.
+            if (String.IsNullOrEmpty(s))
+                return BadRequest("Не указаны параметры запроса");
+            return $"s: {s}";
+        }
+
+        public IActionResult GetOkResult()
+        {
+            // Возвращает статус 200 об усешном выполнении запроса.
+
+            //return Ok; //Может быть пустым или принимать параметр.
+            return Ok("Запрос успешно выполнен");
+        }
+
         // [NonAction] - Не рассматривает метод, как действие контроллера.
         [ActionName("Welcome")] // Атрибут позволяет для метода задать другое имя действия.
         public string Hello(string name)
