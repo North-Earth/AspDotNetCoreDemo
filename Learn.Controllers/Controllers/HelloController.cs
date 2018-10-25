@@ -9,10 +9,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace Learn.Controllers.Controllers
 {
     // [NonController] - Атрибут позволяет не рассматривать класс, как контроллер.
-    public class HelloController : Controller
+    public class HelloController : HelloBaseController
     {
         public IActionResult Index()
         {
+            return Content("Запрос успешно выполнен");
+
             // Временная переадресация, знак "~" означает текущий каталог приложения.
             // При временной переадресации будет возвращаться статусный код 302.
             // return Redirect("~/Home/About");
@@ -29,6 +31,7 @@ namespace Learn.Controllers.Controllers
             // Переадресация по заданному маршруту из Startup
             return RedirectToRoute("default", new { controller = "Home", action = "About" 
                 /*Передача входных параметров, например height = 2, altitude = 20*/ });
+
         }
 
         public IActionResult GetStatusCode()
