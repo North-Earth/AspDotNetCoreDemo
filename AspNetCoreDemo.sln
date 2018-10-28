@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiDemo", "WebApiDemo\We
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcAspDotNetCoreDemo", "MvcAspDotNetCoreDemo\MvcAspDotNetCoreDemo.csproj", "{BFF5A777-1019-4D7D-8721-6006545135D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Learn.Controllers", "Learn.Controllers\Learn.Controllers.csproj", "{11976BF0-B3EF-40D2-A27A-7A721B791FDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Learn.Controllers", "Learn.Controllers\Learn.Controllers.csproj", "{11976BF0-B3EF-40D2-A27A-7A721B791FDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Learn.Views", "Learn.Views\Learn.Views.csproj", "{FA9AEA57-5567-4E96-A061-5EB21A3F379F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{11976BF0-B3EF-40D2-A27A-7A721B791FDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11976BF0-B3EF-40D2-A27A-7A721B791FDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11976BF0-B3EF-40D2-A27A-7A721B791FDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA9AEA57-5567-4E96-A061-5EB21A3F379F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA9AEA57-5567-4E96-A061-5EB21A3F379F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA9AEA57-5567-4E96-A061-5EB21A3F379F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA9AEA57-5567-4E96-A061-5EB21A3F379F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
