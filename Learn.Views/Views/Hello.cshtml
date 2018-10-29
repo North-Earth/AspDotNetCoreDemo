@@ -1,13 +1,103 @@
 ﻿@{
-    Layout = null;
+    string head = "🎈Hello world";
+    head = head + "!";
+
+    bool isEnabled = false;
+
+    int y = 6;
 }
-<!doctype html>
-<html>
-<head>
-    <title>Hello ASP.NET</title>
-    <meta charset="utf-8" />
-</head>
-<body>
-    <h2>Привет ASP.NET Core!</h2>
-</body>
-</html>
+@* Пример комментария *@
+
+@* Управляющие конструкции *@
+@if (isEnabled)
+{
+    <h3>Добро пожаловать</h3>
+}
+else
+{
+    <h3>@head</h3>
+}
+
+<text>Пример 1 🎂</text>@* Вывод значений без HTML синтаксиса*@
+
+@* Пример switch *@
+@switch (y)
+{
+    case 5:
+        <p>@(y * y)</p>
+        break;
+    case 6:
+        <p>@(y + y)</p>
+        break;
+}
+
+@* Пример циклов *@
+@for (var i = 1; i < 6; i++)
+{
+    <p>Строка: @i</p>
+}
+
+@{
+    int a = 1;
+}
+
+@while (a < 6)
+{
+    <p>Строка: @a</p>
+    a++;
+}
+
+@{
+    int z = 1;
+}
+
+@do
+{
+    <p>Строка: @z</p>
+    z++;
+}
+while (z < 6);
+<p>Конец</p>
+
+@{
+    string[] cars = { "Tesla Model S", "Tesla Model X", "Tesla Model 3" };
+}
+<ul>
+    @foreach (var car in cars)
+    {
+        <li>@car</li>
+    }
+</ul>
+
+@* Обработка исключений *@
+@try
+{
+    throw new InvalidOperationException("Что-то пошло не так");
+}
+catch (Exception ex)
+{
+    <p>Возникло исключение: @ex.Message</p>
+}
+finally
+{
+    <p>Блок finally</p>
+}
+
+@* Вывод внутри блока кода *@
+@if (isEnabled)
+{
+    @: Добро пожаловать
+}
+
+@* Функции *@
+@functions
+{
+public int GetFactorial(int n)
+{
+    int result = 1;
+    for (int i = 1; i <= n; i++)
+        result *= i;
+    return result;
+}
+}
+<div>Факториал числа 6 равен: @GetFactorial(6)</div>
