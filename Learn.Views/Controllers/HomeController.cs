@@ -18,9 +18,18 @@ namespace Learn.Views.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            // ViewData Передача знаний в представление по ключу.
+            ViewData["Title"] = "Hello!";
+            ViewData["Message"] = "ASP.NET Core";
 
-            return View();
+            // ViewBag позволяет передавать сложные объекты.
+            ViewBag.MessageBag = "I'm Bag message";
+            ViewBag.Cars = new List<string> { "Honda", "Toyota", "Nissan", "Mazda" };
+
+            //Передача черезе модель представления.
+            var Cars = new List<string> { "Honda", "Toyota", "Nissan", "Mazda" };
+
+            return View(Cars);
         }
 
         public IActionResult Contact()

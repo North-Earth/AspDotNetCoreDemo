@@ -1,7 +1,22 @@
-﻿@{
-    ViewData["Title"] = "About";
-}
+﻿@model List<string>
+
+
 <h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>
+
+<h3>@ViewBag.MessageBag</h3>
+
+<h3>В списке @(((List<string>)ViewBag.Cars).Count) элемента:</h3>
+
+@foreach (string car in ViewBag.Cars)
+{
+    <p>@car</p>
+}
+
+<h3>В списке @Model.Count элемента</h3>
+@foreach (string car in Model)
+{
+    <p>@car</p>
+}
 
 <p>Use this area to provide additional information.</p>
