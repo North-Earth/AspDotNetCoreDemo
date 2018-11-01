@@ -13,7 +13,9 @@ namespace Learn.Views.Controllers
         public IActionResult Index()
         {
             // Явно указываем путь к странице представления.
-            return View("~/Views/Hello.cshtml");
+            //return View("~/Views/Hello.cshtml");
+
+            return View();
         }
 
         public IActionResult About()

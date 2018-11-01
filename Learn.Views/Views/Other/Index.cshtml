@@ -1,19 +1,12 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
-    List<Car> cars = new List<Car>
+    ViewData["Title"] = "Engines";
+    List<Engine> engines = new List<Engine>
     {
-        new Car
-        {
-            Mark = "Toyota",
-            Model = "Celica",
-            Price = 350_000
-        },
-        new Car
-        {
-            Mark = "Mazda",
-            Model = "3",
-            Price = 1_350_000
-        }
+       new Engine
+       {
+           Name = "3S-GTE ",
+           Power = 232
+       }
     };
 }
 
@@ -32,18 +25,16 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Mark</th>
-                    <th>Model</th>
-                    <th>Price</th>
+                    <th>Name</th>
+                    <th>Power</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var car in @cars)
+                @foreach (var engine in @engines)
                 {
                     <tr>
-                        <td>@car.Mark</td>
-                        <td>@car.Model</td>
-                        <td>@car.Price</td>
+                        <td>@engine.Name</td>
+                        <td>@engine.Power</td>
                     </tr>
                 }
             </tbody>
@@ -51,3 +42,4 @@
     </div>
 </body>
 </html>
+
