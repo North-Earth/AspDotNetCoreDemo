@@ -1,20 +1,20 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
     List<Car> cars = new List<Car>
-    {
-        new Car
-        {
-            Mark = "Toyota",
-            Model = "Celica",
-            Price = 350_000
-        },
-        new Car
-        {
-            Mark = "Mazda",
-            Model = "3",
-            Price = 1_350_000
-        }
-    };
+{
+new Car
+{
+Mark = "Toyota",
+Model = "Celica",
+Price = 350_000
+},
+new Car
+{
+Mark = "Mazda",
+Model = "3",
+Price = 1_350_000
+}
+};
 }
 
 <!DOCTYPE html>
@@ -51,3 +51,12 @@
     </div>
 </body>
 </html>
+
+@* Встраиваем частичное представление в страницу *@
+@Html.Partial("_GetMessage")
+
+@* Второй вариант, может работать немного быстрее *@
+@{await Html.RenderPartialAsync("_GetMessage");}
+
+@* Перегружаемая версия *@
+@Html.Partial("_GetCars", new List<string> { "Toyota Supra", "Nissan Skyline", "Honda Civic" })

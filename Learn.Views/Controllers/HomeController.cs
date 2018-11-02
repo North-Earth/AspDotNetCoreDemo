@@ -18,6 +18,12 @@ namespace Learn.Views.Controllers
             return View();
         }
 
+        public ActionResult GetMessage()
+        {
+            // PartialViewResult отвечает за рендаринг частичных представлений.
+            return PartialView("_GetMessage");
+        }
+
         public IActionResult About()
         {
             // ViewData Передача знаний в представление по ключу.
