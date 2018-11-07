@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Learn.Views.Services;
+using Learn.Views.Util;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -34,6 +35,10 @@ namespace Learn.Views
 
             services.AddTransient<IMessageSender, EmailMessageSender>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.Configure<MvcViewOptions>(options => {
+                options.ViewEngines.Clear();
+                options.ViewEngines.Insert(0, new CustomViewEngine());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
