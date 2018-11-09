@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,11 +33,20 @@ namespace Learn.Routing
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            //Определение стандартного маршрута.
+            // Определение стандартного маршрута.
             app.UseMvcWithDefaultRoute();
-            //Эквивалентно стандартной конструкции:
+            // Эквивалентно стандартной конструкции:
             app.UseMvc(routes =>
             {
+                // Добавляем поддержку областей.
+                routes.MapRoute(
+                    name: "areas",
+                    template: "{area:exists}/{controller=Home}/{action=Index}");
+                // Ограничение exists используется для того,
+                // чтобы маршрут сопоставлялся только с теми областями,
+                // которые определены в приложении.
+
+                // Стандартный маршрут.
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
