@@ -49,7 +49,11 @@ namespace Learn.Routing
                 // Стандартный маршрут.
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}"
+                    );
+                routes.MapRoute(
+                    name: "default2",
+                    template: "{controller=Strore}/{action=Index}/{id?}");
             });
         }
     }
