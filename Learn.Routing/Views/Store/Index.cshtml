@@ -8,3 +8,12 @@
 
 @Html.ActionLink("Home", "Index", "Home")
 @Html.ActionLink("Routing", "Index", "Routing")
+
+@*URL-хелперы*@
+@*Отображает URL*@
+@Url.Action("Index", "Book", new { author = "Толстой", id = 10 }, null)
+<a href='@Url.Action("Index", "Book", new { author = "Толстой", id = 10 }, null)'>Ссылка</a>
+@*Принимает имя маршрута и аргументы для параметров маршрута*@
+@Url.RouteUrl(new { controller = "Book", action = "Index", author = "Толстой", id = 10 })
+@*Хелпер Content преобразует относительные пути в абсолютные.*@
+<script src='@Url.Content("~/lib/jquery/dist/jquery.js")'></script>
