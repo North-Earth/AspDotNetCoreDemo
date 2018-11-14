@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Learn.ViewComponent.Models;
 
 namespace Learn.ViewComponent.Components
@@ -12,7 +10,7 @@ namespace Learn.ViewComponent.Components
      * Так же можно использовать атрибут [ViewComponent], 
      * в таком случае суффикс и наследование не требуется.
      */
-    public class BestCarViewComponent 
+    public class BestCarViewComponent
     {
         private List<Car> cars;
 
@@ -21,7 +19,7 @@ namespace Learn.ViewComponent.Components
             cars = new List<Car>
             {
                 new Car {Model = "Tesla Model S", Price = 100900 },
-                new Car {Model = "Tesla Model X", Price = 137700 }
+                new Car {Model = "Tesla Model X", Price = 137700 },
             };
         }
 
