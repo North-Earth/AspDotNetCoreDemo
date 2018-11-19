@@ -2,6 +2,8 @@
     ViewData["Title"] = "Home Page";
 }
 
+@await Component.InvokeAsync("PhonesList", new { maxprice = 55000 })
+
 <p>@await Component.InvokeAsync("BestCar")</p>
 <p>@await Component.InvokeAsync("CarList")</p>
 <p>@await Component.InvokeAsync("CarList", new { maxprice = 137700 })</p>

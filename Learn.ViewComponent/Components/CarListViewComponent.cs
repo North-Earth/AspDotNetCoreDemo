@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Learn.ViewComponent.Models;
+using Microsoft.AspNetCore.Mvc.ViewComponents;
 
 namespace Learn.ViewComponent.Components
 {
