@@ -1,0 +1,8 @@
+﻿@model List<Car>
+<h2>Коллекция спорткаров</h2>
+<ul>
+    @foreach (var car in Model)
+    {
+        <li>Модель: @car.Model  Цена:$@car.Price</li>
+    }
+</ul>
