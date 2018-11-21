@@ -1,0 +1,13 @@
+﻿@model IEnumerable<int>
+@{
+    ViewData["Title"] = "Default";
+}
+
+<h2>Коллекция рандомных чисел:</h2>
+<ul>
+    @foreach (var num in Model)
+    {
+        <li>@num</li>
+    }
+</ul>
+
