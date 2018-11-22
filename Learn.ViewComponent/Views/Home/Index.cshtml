@@ -8,7 +8,7 @@
 
 @*@await Component.InvokeAsync("SportCarsCollection", new { maxprice = 149000 })
 
-@await Component.InvokeAsync("SportCarsCollection", new { minprace = 150000, maxprice = 200000 })*@
+    @await Component.InvokeAsync("SportCarsCollection", new { minprace = 150000, maxprice = 200000 })*@
 
 @await Component.InvokeAsync("PhonesList", new { maxprice = 55000 })
 
@@ -16,3 +16,5 @@
 <p>@await Component.InvokeAsync("CarList")</p>
 <p>@await Component.InvokeAsync("CarList", new { maxprice = 137700 })</p>
 <p>@await Component.InvokeAsync("CarList", new { maxprice = 110000, minprice = 55000 })</p>
+
+@await Component.InvokeAsync("CarsList")
