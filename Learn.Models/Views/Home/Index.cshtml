@@ -1,0 +1,12 @@
+﻿@using Learn.Models.Models
+
+@model IEnumerable<Car>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<table class="table">
+    @foreach (Car p in Model)
+    {
+        <tr><td>@p.Manufacturer?.Name</td><td>@p.Model</td><td>@p.Price рублей</td></tr>
+    }
+</table>

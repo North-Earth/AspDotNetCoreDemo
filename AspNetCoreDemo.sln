@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Learn.Views", "Learn.Views\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Learn.Routing", "Learn.Routing\Learn.Routing.csproj", "{294B5EC0-8B2A-477D-8E9E-70AEAA23B7DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Learn.ViewComponent", "Learn.ViewComponent\Learn.ViewComponent.csproj", "{CABC8862-D4A5-462B-85C8-7689D6F4E594}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Learn.ViewComponent", "Learn.ViewComponent\Learn.ViewComponent.csproj", "{CABC8862-D4A5-462B-85C8-7689D6F4E594}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Learn.Models", "Learn.Models\Learn.Models.csproj", "{6F3A3AEE-4CEB-455E-AD3D-D80910667C42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{CABC8862-D4A5-462B-85C8-7689D6F4E594}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CABC8862-D4A5-462B-85C8-7689D6F4E594}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CABC8862-D4A5-462B-85C8-7689D6F4E594}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F3A3AEE-4CEB-455E-AD3D-D80910667C42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F3A3AEE-4CEB-455E-AD3D-D80910667C42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F3A3AEE-4CEB-455E-AD3D-D80910667C42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F3A3AEE-4CEB-455E-AD3D-D80910667C42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
