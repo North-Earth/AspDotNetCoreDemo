@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Learn.Models.Models;
+using Learn.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Learn.Models.Controllers
@@ -27,9 +29,23 @@ namespace Learn.Models.Controllers
             };
         }
 
-        public IActionResult Index()
-        {
-            return View(cars);
+        public IActionResult Index(int? companyId)
+        {    
+            // Формируем список компаний для передачи в представление.
+            List<CompanyModel> compModels = companies
+                .Select(c => new CompanyModel { Id = c.Id, Name = c.Name })
+                .ToList();
+
+            // Добавляем на первое место.
+            compModels.Insert(0, new CompanyModel { Id = 0, Name = "Все" });
+
+            IndexViewModel ivm = new IndexViewModel { Companies = compModels, Cars = cars };
+
+            // если передан id компании, фильтруем список
+            if (companyId != null && companyId > 0)
+                ivm.Cars = cars.Where(p => p.Manufacturer.Id == companyId);
+
+            return View(ivm);
         }
 
         public IActionResult About()

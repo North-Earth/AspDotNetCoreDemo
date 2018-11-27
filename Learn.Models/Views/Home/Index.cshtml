@@ -1,12 +1,24 @@
 ﻿@using Learn.Models.Models
-
-@model IEnumerable<Car>
+@using Learn.Models.ViewModels
+@model IndexViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
+
+<form class="form-inline">
+    <label>Выберите производителя:</label>
+    <select name="companyId" class="form-control">
+        @foreach (var company in Model.Companies)
+        {
+            <option value="@company.Id">@company.Name</option>
+        }
+    </select>
+    <input type="submit" value="Применить" />
+</form>
+<br />
 <table class="table">
-    @foreach (Car p in Model)
+    @foreach (Car car in Model.Cars)
     {
-        <tr><td>@p.Manufacturer?.Name</td><td>@p.Model</td><td>@p.Price рублей</td></tr>
+        <tr><td>@car.Manufacturer?.Name</td><td>@car.Model</td><td>@car.Price рублей</td></tr>
     }
 </table>
