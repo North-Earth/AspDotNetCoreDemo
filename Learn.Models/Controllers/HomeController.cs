@@ -48,7 +48,33 @@ namespace Learn.Models.Controllers
             return View(ivm);
         }
 
-        public IActionResult About()
+        public IActionResult GetData()
+        {
+            return View();
+        }
+
+        public IActionResult GetCar(Car car)
+        {
+            return Content($" Марка: {car.Manufacturer} Модель: {car.Model} Цена: {car.Price}");
+        }
+
+        public IActionResult GetDataArray(string[] items)
+        {
+            string result = "";
+            foreach (var item in items)
+                result += item + "; ";
+            return Content(result);
+        }
+
+        public IActionResult GetDataDictionary(Dictionary<string, string> items)
+        {
+            string result = "";
+            foreach (var item in items)
+                result += item.Key + "= " + item.Value + "; ";
+            return Content(result);
+        }
+
+        public IActionResult About(string name)
         {
             ViewData["Message"] = "Your application description page.";
 
