@@ -29,6 +29,51 @@ namespace Learn.Models.Controllers
             };
         }
 
+        public IActionResult AddSecondUser()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddSecondUser([FromQuery] SecondUser user)
+        {
+            string userInfo = $"Name: {user.Name}  Age: {user.Age}";
+            return Content(userInfo);
+        }
+
+        //Home/AddUser?Name=name&Age=20&HasRight=true
+        public IActionResult AddUser(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                string userInfo = $"Id: {user.Id}  Name: {user.Name}  Age: {user.Age}  HasRight: {user.HasRight}";
+                return Content(userInfo);
+            }
+            return Content($"Количество ошибок: {ModelState.ErrorCount}");
+        }
+
+        //Атрибут Bind позволяет установить выборочную привязку отдельных значений.
+        public IActionResult AddUserBind([Bind("Name", "Age")] User user)
+        {
+            string userInfo = $"Name: {user.Name}  Age: {user.Age}  HasRight: {user.HasRight}";
+            return Content(userInfo);
+        }
+
+        /*
+         * [FromHeader]: данные берутся из заголовоков запроса.
+         * [FromQuery]:  данные берутся из строки запроса.
+         * [FromRoute]:  данные берутся из значений маршрута.
+         * [FromForm]:   данные берутся из полученных форм.
+         * [FromBody]:   данные берутся из тела запроса. Этот атриут может применяться, 
+         *               когда в качестве источника данных выступает не форма и не строка запроса, 
+         *               а, скажем, данные отправляются через код javascript.
+         * Атрибут FromBody может применяться, если метод имеет только один параметр, иначе будет сгенерировано исключение.
+         */
+        public IActionResult GetUserAgent([FromHeader(Name = "User-Agent")] string userAgent)
+        {
+            return Content(userAgent);
+        }
+
         public IActionResult Index(int? companyId)
         {    
             // Формируем список компаний для передачи в представление.
