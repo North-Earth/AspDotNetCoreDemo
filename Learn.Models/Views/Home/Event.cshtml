@@ -1,0 +1,11 @@
+﻿@using Learn.Models.Models
+@model IEnumerable<Event>
+
+<h3>Список мероприятий</h3>
+<ul>
+    @foreach (Event ev in Model)
+    {
+        <li>@ev.Id @ev.Name @ev.EventDate</li>
+
+    }
+</ul>

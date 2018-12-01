@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Learn.Models.Models;
@@ -11,6 +12,7 @@ namespace Learn.Models.Controllers
     {
         private List<Company> companies;
         private List<Car> cars;
+        static List<Event> events;
 
         public HomeController()
         {
@@ -27,6 +29,28 @@ namespace Learn.Models.Controllers
                 new Car { Id = 2, Manufacturer = companies[1], Model = "CX-5", Price = 1500000 },
                 new Car { Id = 3, Manufacturer = companies[2], Model = "Focus", Price = 600000 },
             };
+
+            if (events == null)
+                events = new List<Event>();
+        }
+
+        public IActionResult Event()
+        {
+
+            return View(events);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Event ev)
+        {
+            ev.Id = Guid.NewGuid().ToString();
+            events.Add(ev);
+            return RedirectToAction("Index");
         }
 
         public IActionResult AddSecondUser()
