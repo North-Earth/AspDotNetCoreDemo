@@ -15,6 +15,11 @@ namespace Learn.HtmlHelpers.Controllers
             return View();
         }
 
+        public IActionResult Create(string state, string city, int number = 0)
+        {
+            return Content($"{state} - {city} - {number}");
+        }
+
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";

@@ -12,7 +12,32 @@
 @*Хелперы упрощают дублирование однотипного HTML кода*@
 <h3>Города</h3>
 @Html.CreateList(cities)
-<br/>
+<br />
 <h3>Штаты</h3>
 @*Альтернативный способ вызова*@
 @ListHelper.CreateList(Html, states)
+
+<h3>Добавить новый элемент</h3>
+@* Html.BeginForm позволяет упростить создание формы отправки запроса *@
+@using (Html.BeginForm("Create", "Home", FormMethod.Post))
+{
+    <p>
+        <label>Штат:</label><br />
+        @Html.TextBox("State") @*Хелпер поля для ввода*@
+    </p>
+    <p>
+        <label>Город:</label><br />
+        <input type="text" name="City" />
+    </p>
+    <p>
+        <label>Число:</label><br />
+        @*Перегруженный метод, Который указывает что поле будет только числовое, хотя по-умолчанию текстовое*@
+        @Html.TextBox("Number", "", new { type = "number" })
+    </p>
+    <p>
+        <input type="submit" value="Отправить" />
+    </p>
+}
+
+@* Если для POST и GET один и тот же метод, то параметры можно опустить *@
+@*@using (Html.BeginForm()) { }*@
