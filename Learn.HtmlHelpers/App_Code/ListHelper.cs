@@ -1,10 +1,23 @@
-﻿using System.IO;
+﻿using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Learn.HtmlHelpers.App_Code
 {
+    public enum TimeOfDay
+    {
+        [Display(Name = "Утро")]
+        Morning,
+        [Display(Name = "День")]
+        Afternoon,
+        [Display(Name = "Вечер")]
+        Evening,
+        [Display(Name = "Ночь")]
+        Night
+    }
+
     public static class ListHelper
     {
         public static HtmlString CreateList(this IHtmlHelper html, string[] items)

@@ -41,3 +41,75 @@
 
 @* Если для POST и GET один и тот же метод, то параметры можно опустить *@
 @*@using (Html.BeginForm()) { }*@
+
+@* Примеры использования HTML-Хелперов и анологичного HTML кода *@
+@Html.Label("Name", "Модель")
+@*<label for="Name">Модель</label>*@
+
+<br />
+
+@Html.TextArea("text", "Привет мир!")
+@*<textarea cols="20" id="text" name="text" rows="2">Привет мир!</textarea>*@
+
+<br />
+
+@Html.TextArea("text", "Привет мир!", 5, 50, null)
+@*<textarea cols="50" id="text" name="text" rows="5">Привет мир!</textarea>*@
+
+<br />
+
+@Html.Hidden("CarId", "2") @* Скрытое поле *@
+@*<input id="PhoneId" name="CarId" type="hidden" value="2" />*@
+
+<br />
+
+@Html.Password("UserPassword", "val")
+@*<input id="UserPassword" name="UserPassword" type="password" value="val" />*@
+
+<br />
+
+@Html.RadioButton("color", "red")
+<span>красный</span> <br />
+@Html.RadioButton("color", "blue")
+<span>синий</span> <br />
+@Html.RadioButton("color", "green", true)
+<span>зеленый</span>
+@*<input id="color" name="color" type="radio" value="red" />
+    <span>красный</span> <br />
+    <input id="color" name="color" type="radio" value="blue" />
+    <span>синий</span> <br />
+    <input checked="checked" id="color" name="color" type="radio" value="green" />
+    <span>зеленый</span>*@
+
+<br />
+
+@Html.CheckBox("Enable", false)
+@*<input id="Enable" name="Enable" type="checkbox" value="true">
+    <input name="Enable" type="hidden" value="false">*@
+
+<br />
+
+@Html.DropDownList("car", new SelectList(new string[] { "Toyota Supra", "Honda Civic", "Nissan Skyline" }), "Выберите модель")
+@*<select id="car" name="phone">
+        <option value="">Выберите модель</option>
+        <option>Toyota Supra</option>
+        <option>Honda Civic</option>
+        <option>Nissan Skyline</option>
+    </select>*@
+
+@*@Html.ListBox("phones", new MultiSelectList(new string[] { "iPhone 7 Pro", "Galaxy 7 Edge", "HTC 10", "Honor 5X" }))
+    <select id="phones" multiple="multiple" name="phones">
+        <option>iPhone 7 Pro</option>
+        <option>Galaxy 7 Edge</option>
+        <option>HTC 10</option>
+        <option>Honor 5X</option>
+    </select>*@
+
+@using (Html.BeginForm("Create", "Home", FormMethod.Post))
+{
+    @Html.DropDownList("daytime", Html.GetEnumSelectList(typeof(TimeOfDay)))
+    <br />
+    <p>
+        <input type="submit" value="Отправить" />
+    </p>
+}
