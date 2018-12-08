@@ -1,6 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@* Модель важна для явно типизированных хелперов *@
+@model Car
 
 @{
     string[] cities = new string[] { "Портленд", "Нью-Йорк", "Лос-Анджелес" };
@@ -113,3 +115,59 @@
         <input type="submit" value="Отправить" />
     </p>
 }
+
+<br />
+
+@* Строго типизированные хелперы *@
+<h1>Строго типизированные хелперы</h1>
+@using (Html.BeginForm("Create", "Home", FormMethod.Post))
+{
+    <p>
+        @Html.LabelFor(m => m.Mark, "Марка")<br />
+        @Html.TextBoxFor(m => m.Mark)
+    </p>
+    <p>
+        @Html.LabelFor(m => m.Model, "Модель")<br />
+        @Html.TextBoxFor(m => m.Model, "")
+    </p>
+    <p>
+        <input type="submit" value="Отправить" />
+    </p>
+}
+
+@*Html.HiddenFor
+Выражение @Html.HiddenFor(m => m.Id) создает разметку:
+<input id="Id" name="Id" type="hidden" value="[значение_m.Id]" />
+
+Html.CheckBoxFor
+Выражение @Html.CheckBoxFor(m => m.Enable, false) формирует два элемента:
+<input id="Enable" name="Enable" type="checkbox" value="true" />
+<input name="Enable" type="hidden" value="false">
+
+Html.LabelFor
+Хелпер @Html.LabelFor(m => m.Name, "Модель") генерирует разметку:
+<label for="Name">Модель</label>
+
+Html.PasswordFor
+Хелпер @Html.PasswordFor(m => m.Password) создает разметку:
+<input id="Password" name="Password" type="password" />
+
+Html.RadioButtonFor
+@Html.RadioButtonFor(m => m.Option, "val") генерирует разметку:
+<input id="Option" name="Option" type="radio" value="val" />
+
+Html.TextBoxFor
+Выражение
+@Html.TextBoxFor(m => m.Name) создает разметку:
+<input id="Name" name="Name" type="text" />
+
+Html.TextAreaFor
+Хелпер @Html.TextAreaFor(m => m.Name, 10, 9, null) генерирует код:
+<textarea cols="9" id="Name" name="Name" rows="10"></textarea>
+
+Html.DropDownListFor
+Создает выпадающий список select с одиночным выбором для установки свойства модели
+
+Html.ListBoxFor
+Создает список select со множественным выбором для определенного свойства модели. Подходит, если свойство модели представляет массив или список
+*@
