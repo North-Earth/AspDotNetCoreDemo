@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Learn.HtmlHelpers.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Learn.HtmlHelpers.Controllers
 {
@@ -10,12 +8,24 @@ namespace Learn.HtmlHelpers.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var car = new Car { Id = 1, Mark = "Tesla", Model = "Model S" };
+            return View(car);
         }
 
         public IActionResult Create(string state, string city, int number = 0)
         {
             return Content($"{state} - {city} - {number}");
+        }
+
+        public IActionResult CreateCar()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateCar(Car car)
+        {
+            return Content($"{car.Mark} - {car.Model}");
         }
 
         public IActionResult About()

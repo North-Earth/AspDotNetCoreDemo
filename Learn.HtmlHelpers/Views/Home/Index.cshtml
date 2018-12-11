@@ -119,7 +119,7 @@
 <br />
 
 @* Строго типизированные хелперы *@
-<h1>Строго типизированные хелперы</h1>
+<h3>Строго типизированные хелперы</h3>
 @using (Html.BeginForm("Create", "Home", FormMethod.Post))
 {
     <p>
@@ -136,38 +136,77 @@
 }
 
 @*Html.HiddenFor
-Выражение @Html.HiddenFor(m => m.Id) создает разметку:
-<input id="Id" name="Id" type="hidden" value="[значение_m.Id]" />
+    Выражение @Html.HiddenFor(m => m.Id) создает разметку:
+    <input id="Id" name="Id" type="hidden" value="[значение_m.Id]" />
 
-Html.CheckBoxFor
-Выражение @Html.CheckBoxFor(m => m.Enable, false) формирует два элемента:
-<input id="Enable" name="Enable" type="checkbox" value="true" />
-<input name="Enable" type="hidden" value="false">
+    Html.CheckBoxFor
+    Выражение @Html.CheckBoxFor(m => m.Enable, false) формирует два элемента:
+    <input id="Enable" name="Enable" type="checkbox" value="true" />
+    <input name="Enable" type="hidden" value="false">
 
-Html.LabelFor
-Хелпер @Html.LabelFor(m => m.Name, "Модель") генерирует разметку:
-<label for="Name">Модель</label>
+    Html.LabelFor
+    Хелпер @Html.LabelFor(m => m.Name, "Модель") генерирует разметку:
+    <label for="Name">Модель</label>
 
-Html.PasswordFor
-Хелпер @Html.PasswordFor(m => m.Password) создает разметку:
-<input id="Password" name="Password" type="password" />
+    Html.PasswordFor
+    Хелпер @Html.PasswordFor(m => m.Password) создает разметку:
+    <input id="Password" name="Password" type="password" />
 
-Html.RadioButtonFor
-@Html.RadioButtonFor(m => m.Option, "val") генерирует разметку:
-<input id="Option" name="Option" type="radio" value="val" />
+    Html.RadioButtonFor
+    @Html.RadioButtonFor(m => m.Option, "val") генерирует разметку:
+    <input id="Option" name="Option" type="radio" value="val" />
 
-Html.TextBoxFor
-Выражение
-@Html.TextBoxFor(m => m.Name) создает разметку:
-<input id="Name" name="Name" type="text" />
+    Html.TextBoxFor
+    Выражение
+    @Html.TextBoxFor(m => m.Name) создает разметку:
+    <input id="Name" name="Name" type="text" />
 
-Html.TextAreaFor
-Хелпер @Html.TextAreaFor(m => m.Name, 10, 9, null) генерирует код:
-<textarea cols="9" id="Name" name="Name" rows="10"></textarea>
+    Html.TextAreaFor
+    Хелпер @Html.TextAreaFor(m => m.Name, 10, 9, null) генерирует код:
+    <textarea cols="9" id="Name" name="Name" rows="10"></textarea>
 
-Html.DropDownListFor
-Создает выпадающий список select с одиночным выбором для установки свойства модели
+    Html.DropDownListFor
+    Создает выпадающий список select с одиночным выбором для установки свойства модели
 
-Html.ListBoxFor
-Создает список select со множественным выбором для определенного свойства модели. Подходит, если свойство модели представляет массив или список
+    Html.ListBoxFor
+    Создает список select со множественным выбором для определенного свойства модели. Подходит, если свойство модели представляет массив или список
 *@
+
+<h3>Шаблонные хелперы</h3>
+<p>
+    <b>Id:</b><br />
+    @Html.Display("Id")
+</p>
+<p>
+    <b>Марка:</b><br />
+    @Html.Display("Mark")
+</p>
+<p>
+    <b>Модель:</b><br />
+    @Html.Display("Model")
+</p>
+
+
+@*Создает поля для чтения для всех свойств модели: Html.DisplayForModel()*@
+@Html.DisplayForModel()
+
+@*DisplayTextForModel
+    Создает поля для чтения для всех свойств модели в виде строки
+
+    EditorForModel
+    Создает поля для редактирования для всех свойств модели: Html.EditorForModel()*@
+
+@using (Html.BeginForm("CreateCar", "Home", FormMethod.Post))
+{
+    <p>
+        @Html.LabelFor(m => m.Model, "Модель")<br />
+        @Html.Editor("Name")
+    </p>
+    <p>
+        @Html.LabelFor(m => m.Mark, "Марка")<br />
+        @Html.EditorFor(m => m.Mark)
+    </p>
+    <p>
+        <input type="submit" value="Отправить" />
+    </p>
+}
