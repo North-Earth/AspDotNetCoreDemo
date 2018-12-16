@@ -210,3 +210,17 @@
         <input type="submit" value="Отправить" />
     </p>
 }
+
+<br />
+
+@* Html.ActionLink *@
+
+@Html.ActionLink("О сайте", "About")
+@* Вызов другого контроллера с параметрами *@
+@Html.ActionLink("Достоевский", "Index", "Book", new { author = "Достоевский", id = 5 }, null)
+@Html.ActionLink("Все книги", "Index", "Book", new { author = "Толстой", id = 10 }, new { id = "Tolstoi", @class = "link" })
+
+@* Html.RouteLink *@
+@* RouteLink позволяет пользоваться маршрутами из Startup *@
+@Html.RouteLink("Test Book Controller", "bookRoute", new { action = "Show" })
+
