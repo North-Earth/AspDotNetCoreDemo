@@ -7,6 +7,26 @@
 <body>
     @* Пример tag-хелпера с переходом по пути контроллер/страница *@
     <a asp-controller="Home" asp-action="Contact">Контакты</a>
+
+    @*
+        asp-controller: указывает на контроллер, которому предназначен запрос
+        asp-action: указывает на действие контроллера
+        asp-host: указывает на домен сайта
+        asp-protocol: определяет протокол (http или https)
+        asp-route: указывает на название маршрута
+        asp-all-route-data: устанавливает набор значений для параметров
+        asp-route-[название параметра]: определяет значение для определенного параметра
+        asp-fragment: определяет ту часть хэш-ссылки, которая идет после символа решетки #.
+            Например, "paragraph2" в ссылке "http://mysite.com/#paragraph2"
+    *@
+
+    <a asp-controller="Home" asp-action="About" asp-host="localhost:44332" asp-protocol="https">О сайте</a>
+    <br />
+
+    @* Примеры запросов с параметрами *@
+    <a asp-controller="Learn" asp-action="Create" asp-route-id="5" asp-route-age="18" asp-route-name="tom">Item5</a>
+    <a asp-controller="Learn" asp-action="Create" asp-all-route-data='new Dictionary<string,string> { { "id", "5" }, {"name", "tom" }, { "age", "18" } }'>Item5</a>
+
 </body>
 </html>
 

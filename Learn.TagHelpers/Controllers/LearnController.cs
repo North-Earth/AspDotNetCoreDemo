@@ -12,5 +12,10 @@ namespace Learn.TagHelpers.Controllers
         {
             return View();
         }
+
+        public string Create(int id, int age, string name)
+        {
+            return $"id:{id} age:{age} name:{name}";
+        }
     }
 }
