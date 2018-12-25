@@ -37,5 +37,17 @@ namespace Learn.TagHelpers.Controllers
             Company company = companies.FirstOrDefault(c => c.Id == phone.CompanyId);
             return $"Добавлен новый элемент: {phone.Name} ({company?.Name})";
         }
+
+
+        public IActionResult DayTime()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult DayTime(DayTimeViewModel model)
+        {
+            return Content(model.Period.ToString());
+        }
     }
 }

@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "DayTime";
+}
+
+@using Learn.TagHelpers.Models
+@model DayTimeViewModel
+
+<form method="post">
+    <div>
+        <div>
+            <label asp-for="Period">Время суток</label>
+            <select asp-for="Period" asp-items="Html.GetEnumSelectList<DayTime>()"></select>
+        </div>
+        <div>
+            <input type="submit" value="Save" />
+        </div>
+    </div>
+    @* Или *@
+    <div>
+        <label asp-for="Period">Время суток</label>
+        <select asp-for="Period" asp-items="@new SelectList(Enum.GetNames(typeof(DayTime)))"></select>
+    </div>
+</form>
+

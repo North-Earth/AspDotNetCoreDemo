@@ -7,6 +7,15 @@
 
 <h2>Добавление телефона</h2>
 
+
+@*asp-controller: указывает на контроллер, которому предназначен запрос
+    asp-action: указывает на действие контроллера
+    asp-area: указывает на название области, в которой будет вызываться контроллер для обработки формы
+    asp-antiforgery: если имеет значение true, то для этой формы будет генерироваться antiforgery token
+    asp-route: указывает на название маршрута
+    asp-all-route-data: устанавливает набор значений для параметров
+    asp-route-[название параметра]: определяет значение для определенного параметра*@
+
 <form asp-action="CreatePhone" asp-controller="Learn" asp-antiforgery="true">
     <div>
         <div>
@@ -27,3 +36,27 @@
     </div>
 </form>
 
+<label asp-for="Name"></label>
+
+@* Поле ввода *@
+<input asp-for="Name" />
+
+@* Задаёт формат ввода *@
+<input asp-for="ReleaseDate" asp-format="{0:dd-MM-yyyy}" />
+
+@* Многострочный ввод *@
+<textarea asp-for="Name"></textarea>
+
+@* Список *@
+<select asp-for="CompanyId" asp-items="ViewBag.Companies"></select>
+@* Можно добавить элемент по-умолчанию *@
+<select asp-for="CompanyId" asp-items="ViewBag.Companies">
+    <option selected="selected" disabled="disabled">Выберите компанию</option>
+</select>
+
+
+@*  *@
+
+@*  *@
+
+@*  *@
