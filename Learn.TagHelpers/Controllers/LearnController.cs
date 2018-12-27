@@ -38,7 +38,6 @@ namespace Learn.TagHelpers.Controllers
             return $"Добавлен новый элемент: {phone.Name} ({company?.Name})";
         }
 
-
         public IActionResult DayTime()
         {
             return View();
@@ -48,6 +47,11 @@ namespace Learn.TagHelpers.Controllers
         public IActionResult DayTime(DayTimeViewModel model)
         {
             return Content(model.Period.ToString());
+        }
+
+        public IActionResult Validation()
+        {
+            return View();
         }
     }
 }
