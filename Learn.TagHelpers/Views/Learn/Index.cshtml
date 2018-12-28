@@ -81,8 +81,15 @@
     <a asp-controller="Learn" asp-action="Create" asp-all-route-data='new Dictionary<string,string> { { "id", "5" }, {"name", "tom" }, { "age", "18" } }'>Item5</a>
 
 
-    @**@
-
+    @* Генерация разметки в зависимости от состояния приложения(разработка или деплой) *@
+    @*<environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="hidden" asp-fallback-test-property="visibility" asp-fallback-test-value="hidden" />
+    </environment>*@
 </body>
 </html>
 
